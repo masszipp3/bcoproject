@@ -1,0 +1,180 @@
+{% extends 'bcoadmin/index.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="{% url 'bco_Admin:home' %}"><img src="{% static 'assets/img/icons/dashboard.svg' %}"
+                            alt="img"><span> Dashboard</span> </a>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/product.svg' %}"
+                            alt="img"><span>
+                            Product</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="{% url 'bco_Admin:products' %}" class="active">Product List</a></li>
+                        <li><a href="{% url 'bco_Admin:addproduct' %}">Add Product</a></li>
+                        <li><a href="{% url 'bco_Admin:category' %}">Category List</a></li>
+                        <li><a href="{% url 'bco_Admin:addcategory' %}">Add Category</a></li>
+                        <li><a href="{% url 'bco_Admin:subcategory' %}">Sub Category List</a></li>
+                        <li><a href="{% url 'bco_Admin:addsubcategory' %}">Add Sub Category</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/product.svg' %}"
+                            alt="img"><span> Stock Management</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="">Stock in</a></li>
+                        <li><a href="">Stock Out</a></li>
+                        <li><a href="">Stock in List</a></li>
+                        <li><a href="">Stock Out List</a></li>
+                        <li><a href="">Stock Return</a></li>
+                        <li><a href="">Stock Return List</a></li>
+
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/users1.svg' %}"
+                            alt="img"><span> People</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="">Customer List</a></li>
+                        <li><a href="">Add Customer </a></li>
+                        <li><a href="">Supplier List</a></li>
+                        <li><a href="">Add Supplier </a></li>
+                        <!-- <li><a href="">User List</a></li>
+                        <li><a href="">Add User</a></li>
+                        <li><a href="">Store List</a></li>
+                        <li><a href="">Add Store</a></li> -->
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/time.svg' %}" alt="img"><span>
+                            Report</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="">Stock in order report</a></li>
+                        <li><a href="">Stock Out Report</a></li>
+                        <!-- <li><a href="">Sales Report</a></li>
+                        <li><a href="">Invoice Report</a></li>
+                        <li><a href="">Purchase Report</a></li>
+                        <li><a href="">Supplier Report</a></li>
+                        <li><a href="">Customer Report</a></li> -->
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Product Details</h4>
+                <h6>Full details of a product</h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <div class="bar-code-view">
+                            <img src="assets/img/barcode1.png" alt="barcode">
+                            <a class="printimg">
+                                <img src="assets/img/icons/printer.svg" alt="print">
+                            </a>
+                        </div> -->
+                        <div class="productdetails">
+                            <ul class="product-bar">
+                                <li>
+                                    <h4>Product</h4>
+                                    <h6>{{product.product_name}} </h6>
+                                </li>
+                                <li>
+                                    <h4>Product Code</h4>
+                                    <h6>{{product.product_code}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Category</h4>
+                                    <h6>{{product.category.category_name}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Sub Category</h4>
+                                    <h6>{{product.sub_category.subcategory_name}}</h6>
+                                </li>
+                               
+                                <li>
+                                    <h4>Unit</h4>
+                                    <h6>{{product.unit_type}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Minimum Qty</h4>
+                                    <h6>{{product.min_quantity}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Quantity</h4>
+                                    <h6>{{product.quantity}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Status</h4>
+                                    <h6>{{product.status}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Price</h4>
+                                    <h6>{{product.defaul_price}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Created By</h4>
+                                    <h6>{{product.Added}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Created on</h4>
+                                    <h6>{{product.added_date}}</h6>
+                                </li>
+                                <li>
+                                    <h4>Description</h4>
+                                    <h6>{{product.product_description}}</h6>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="slider-product-details">
+                            <div class="owl-carousel owl-theme product-slide">
+                                <div class="slider-product">
+                                    <img src="{{product.product_image.url}}" style="max-height: 250px;" alt="img">
+                                    <h4>{{product.product_name}}.jpg</h4>
+                                    <h6>581kb</h6>
+                                </div>
+                                <div class="slider-product">
+                                    <img src="{{product.product_image.url}}" style="max-height: 250px;" alt="img">
+                                    <h4>{{product.product_name}}.jpg</h4>
+                                    <h6>581kb</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block bodyend %}
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'bcoadmin/index.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="index.html"><img src="{% static 'assets/img/icons/dashboard.svg' %}" alt="img"><span></span>
+                            Dashboard</span> </a>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/product.svg' %}"
+                            alt="img"><span>
+                            Product</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="{% url 'bco_Admin:products' %}">Product List</a></li>
+                        <li><a href="{% url 'bco_Admin:addproduct' %}">Add Product</a></li>
+                        <li><a href="{% url 'bco_Admin:category' %}">Category List</a></li>
+                        <li><a href="{% url 'bco_Admin:addcategory' %}" class="active">Add Category</a></li>
+                        <li><a href="{% url 'bco_Admin:subcategory' %}">Sub Category List</a></li>
+                        <li><a href="{% url 'bco_Admin:addsubcategory' %}">Add Sub Category</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/product.svg' %}"
+                            alt="img"><span> Stock Management</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="saleslist.html">Stock in</a></li>
+                        <li><a href="pos.html">Stock Out</a></li>
+                        <li><a href="pos.html">Stock in List</a></li>
+                        <li><a href="salesreturnlists.html">Stock Out List</a></li>
+                        <li><a href="createsalesreturns.html">Stock Return</a></li>
+                        <li><a href="createsalesreturns.html">Stock Return List</a></li>
+
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/users1.svg' %}"
+                            alt="img"><span> People</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="">Customer List</a></li>
+                        <li><a href="">Add Customer </a></li>
+                        <li><a href="">Supplier List</a></li>
+                        <li><a href="">Add Supplier </a></li>
+                        <!-- <li><a href="">User List</a></li>
+                        <li><a href="">Add User</a></li>
+                        <li><a href="">Store List</a></li>
+                        <li><a href="">Add Store</a></li> -->
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="{% static 'assets/img/icons/time.svg' %}" alt="img"><span>
+                            Report</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="">Stock in order report</a></li>
+                        <li><a href="">Stock Out Report</a></li>
+                        <!-- <li><a href="">Sales Report</a></li>
+                        <li><a href="">Invoice Report</a></li>
+                        <li><a href="">Purchase Report</a></li>
+                        <li><a href="">Supplier Report</a></li>
+                        <li><a href="">Customer Report</a></li> -->
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Product Add Category</h4>
+                <h6>Create new product Category</h6>
+            </div>
+        </div>
+
+        <div class="card">
+
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="row">
+                    
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Category Name</label>
+                                <input type="text" value="{{category.category_name}}" name="category_name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Category Code</label>
+                                <input type="text" value="{{category.category_code}}" name="category_code">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control"  name="category_description">{{category.category_description}}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label> Category Image</label>
+                                <div class="image-upload">
+                                    <input type="file" name="category_image">
+                                    <div class="image-uploads">
+                                        <img src="{% static 'assets/img/icons/upload.svg' %}" alt="img">
+                                        <h4>Drag and drop a file to upload</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn btn-submit me-2">Submit</button>
+                            <a href="categorylist.html" class="btn btn-cancel">Cancel</a>
+                        </div>
+                </div>
+                <!-- <input type="submit" value="ss"> -->
+            </form>
+
+            </div>
+            <h6 class="p-4 text-danger" style="text-align: center;">{{data}}</h6>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block bodyend %}
+{% endblock %}
